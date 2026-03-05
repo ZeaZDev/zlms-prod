@@ -51,7 +51,7 @@ namespace lms.ebook
                 }
                 catch (Exception ex)
                 {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occurred: " + ex.Message;
                 }
             }
 
@@ -76,7 +76,7 @@ namespace lms.ebook
                 }
                 catch (Exception ex)
                 {
-                    //StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    //StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occurred: " + ex.Message;
                 }
             }
 
