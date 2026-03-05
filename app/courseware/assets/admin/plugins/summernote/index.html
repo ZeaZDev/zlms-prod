@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="dist/summernote.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="dist/summernote.min.js"></script>
+</head>
+<body>
+	<div id="summernote">Hello Summernote</div>
+	<textarea id="tmp" style="display: none;"></textarea>
+	<button id="btn1">Submit</button>
+	<script>
+		$(document).ready(function() {
+			$("#summernote").summernote({
+				height: 300,
+				focus: true,
+				onImageUpload: function(files, editor, welEditable) {
+					sendFile(files[0], editor, welEditable);
+					alert('test');
+				}				
+			});
+			$("#btn1").on("click",function(){
+				var markupStr = $('#summernote').summernote('code');
+				$("#tmp").html(markupStr);
+				$("#tmp").css("display","block");
+			});
+		   function sendFile(file, editor, welEditable) {
+				data = new FormData();
+				data.append("file", file);
+				$.ajax({
+					data: data,
+					type: "POST",
+					url: "save.php",
+					cache: false,
+					contentType: false,
+					processData: false,
+					success: function(url) {
+						editor.insertImage(welEditable, url);
+					}
+				});
+			}
+		});
+	</script>
+</body>
+</html>

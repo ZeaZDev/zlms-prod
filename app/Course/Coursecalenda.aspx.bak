@@ -1,0 +1,28 @@
+﻿<%@ Page Language="C#"   MasterPageFile="~/Police.Master" AutoEventWireup="true" CodeBehind="Coursecalenda.aspx.cs" Inherits="newweb.Course.Coursecalenda" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxScheduler.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxScheduler" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.XtraScheduler.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="cc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="body" ContentPlaceHolderID="body" runat="server" >
+  
+    <dx:ASPxScheduler ID="ASPxScheduler1" runat="server"
+  ActiveViewType="Month" >
+    <OptionsCustomization AllowAppointmentCreate="None"
+      AllowAppointmentEdit="None"
+      AllowAppointmentDelete="None" />
+    <Views>
+        <DayView  Enabled="false" />
+        <WorkWeekView Enabled="false" />
+        <TimelineView Enabled="false" />
+    </Views>
+</dx:ASPxScheduler>
+      <asp:SqlDataSource ID="sqlDP" runat="server" ConnectionString="<%$ ConnectionStrings:cdas_conn %>"
+                    SelectCommand="SELECT * From Course where id=@id"  >
+           <SelectParameters>
+                         <asp:QueryStringParameter Name="id" QueryStringField="id" />                      
+                   </SelectParameters>
+      </asp:SqlDataSource>
+</asp:Content>
+

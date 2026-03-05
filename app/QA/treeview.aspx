@@ -1,0 +1,60 @@
+﻿<%@ Page Language="C#"  MasterPageFile="~/Police.Master" AutoEventWireup="true" CodeBehind="treeview.aspx.cs" Inherits="newweb.QA.treeview" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="body" ContentPlaceHolderID="body" runat="server"> 
+     <div class="page-bar"> 
+   
+      <ul class="page-breadcrumb">
+        <li>
+           <a href="<%= ResolveUrl("~/default.aspx") %>">Home</a>
+           <i class="fa fa-circle"></i>
+       </li>
+       <li>
+           <span>QA Project</span>
+       </li>
+     </ul>
+         </div>
+     <br />
+   <div class="row">
+       <div class="col-md-12">                               
+       <!-- BEGIN SAMPLE TABLE PORTLET-->
+       <div class="portlet box green">
+           <div class="portlet-title">
+               <div class="caption">
+                    <i class="fa fa-cogs"></i>Tree View Project
+               </div>
+               <div class="tools">
+                   
+                </div>
+           </div>
+           <div class="portlet-body">
+               <dx:ASPxTreeList ID="treeList" runat="server" AutoGenerateColumns="False"
+                    DataSourceID="sqlDP" Width="100%"
+                    KeyFieldName="acid" ParentFieldName="projectid">
+                    <Columns>
+                        <dx:TreeListDataColumn FieldName="Project" VisibleIndex="0" />
+                        <dx:TreeListDataColumn FieldName="activities" VisibleIndex="1" />
+                        <dx:TreeListDataColumn FieldName="Activitiesdetail" VisibleIndex="2" />
+                        <dx:TreeListDataColumn FieldName="passscore" VisibleIndex="2" />
+                        <dx:TreeListDataColumn FieldName="projectid" Visible="False" VisibleIndex="3">
+                            <CellStyle BackColor="#ffebb1" />
+                        </dx:TreeListDataColumn>
+
+                    </Columns>
+                    <SettingsBehavior ExpandCollapseAction="NodeDblClick" />
+                </dx:ASPxTreeList>
+               <asp:SqlDataSource ID="sqlDP" runat="server" ConnectionString="<%$ ConnectionStrings:cdas_conn %>"
+                    SelectCommand="SELECT qp.Project,qa.activities,qp.id as projectid,qd.id as acid,qd.Activitiesdetail,CASE  WHEN qd.[Passascore] ='1' then 'pass' ELSE 'no result' END   as passscore FROM [QA_project] qp 
+inner join QA_activities qa on qa.projectid=qp.id inner join QA_activities_detail qd on qd.Activities=qa.id where qp.Active='1' "  >
+                </asp:SqlDataSource>
+           </div>   
+       </div>                             
+        <!-- END SAMPLE TABLE PORTLET-->                      
+        </div>
+    </div>
+    
+</asp:Content>

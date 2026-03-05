@@ -1,0 +1,64 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/Police.Master"  AutoEventWireup="true" CodeBehind="View_report.aspx.cs" Inherits="newweb.QA.View_report" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="body" ContentPlaceHolderID="body" runat="server"> 
+    
+     <div class="page-bar"> 
+   
+      <ul class="page-breadcrumb">
+        <li>
+           <a href="<%= ResolveUrl("~/default.aspx") %>">Home</a>
+           <i class="fa fa-circle"></i>
+       </li>
+       <li>
+           <span>QA Project</span>
+       </li>
+     </ul>
+         </div>
+     <br />
+   <div class="row">
+       <div class="col-md-12">                               
+       <!-- BEGIN SAMPLE TABLE PORTLET-->
+       <div class="portlet box green">
+           <div class="portlet-title">
+               <div class="caption">
+                    <i class="fa fa-cogs"></i>List of QA Project
+               </div>
+               <div class="tools">
+                    <a  class="" data-controls-modal="mdAdd" data-toggle="modal"   href="#mdAdd" >
+                        <i class="fa fa-plus"> </i> <span>Create New</span>
+                     </a>
+                </div>
+           </div>
+           <div class="portlet-body">
+             <div class="table-responsive">
+              <asp:GridView ID="gvDP" runat="server" class="table table-striped" AutoGenerateColumns="False" DataSourceID="sqlDP"  ShowFooter="false" >
+                    <Columns>
+                        <asp:TemplateField HeaderText="Name">
+                            <ItemTemplate>
+                                 <asp:HyperLink ID="lnk" runat="server" Target="_self" Text='<%# Eval("Project") %>'
+                                            NavigateUrl='<%# "View_detail_report.aspx?ID=" +Eval("ID") %>'></asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField> 
+                         <asp:TemplateField>
+                            <ItemTemplate>
+                                 <asp:LinkButton runat="server" ID="LinkButton1" class="btn btn-success btn-circle btn-sm"  CommandArgument='<%# Eval("ID") %>' OnClick="Button3_Click">
+                                    <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                </asp:LinkButton>                         
+                            </ItemTemplate>
+                        </asp:TemplateField>                        
+                    </Columns>
+                   <HeaderStyle Font-Size="Small" BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                </asp:GridView>      
+              </div>                    
+           </div>
+           <asp:SqlDataSource ID="sqlDP" runat="server" ConnectionString="<%$ ConnectionStrings:cdas_conn %>"
+                    SelectCommand="SELECT  [id] ,[Project] FROM [QA_project] c where Active='1'"  >
+                </asp:SqlDataSource>
+       </div>                             
+        <!-- END SAMPLE TABLE PORTLET-->                      
+        </div>
+    </div>
+     
+</asp:Content>

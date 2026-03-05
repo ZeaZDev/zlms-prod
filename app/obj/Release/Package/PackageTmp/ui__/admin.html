@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>กองบัญชาการศึกษา สํานักงานตํารวจแห่งชาติ</title>    
+	<link rel="icon" href="img/logo/logo.gif">   
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+					<a class="navbar-brand fontHD" href="#"><span> LMS </span>POLICE</a>
+					<ul class="nav navbar-top-links navbar-right">
+						<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+							<em class="fa fa-user-circle-o" ></em> ปิยะ กันตกุล <span class="label label-info"></span>
+						</a>
+						<ul class="dropdown-menu dropdown-alerts">
+							<li>
+								<a href="#"><div><em class="fa fa-user-circle-o"></em> แก้ไขข้อมูลส่วนตัว</div></a>
+								<a href="#"><div><em class="fa fa-cog"></em> ตั้งค่ารหัสผ่าน</div></a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="home.html" ><div><em class="fa fa-power-off"></em> ออกจากระบบ</div></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div> 
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
+	<style type="text/css">
+	.hd_sidebar::-webkit-scrollbar { 
+		display: none; 
+	}
+</style>
+
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar hd_sidebar">
+	<div class="profile-sidebar">
+		<div class="profile-userpic">
+			<img src="img/profile/piya.jpg" class="img-responsive" alt="">
+		</div>
+		<div class="profile-usertitle">
+			<div class="profile-usertitle-name">ปิยะ กันตกุล</div>
+			<div class="profile-usertitle-status fontHD"><span class="indicator label-success"></span>admin</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="divider"></div>
+	<ul class="nav menu">
+		<li class="active"><a href="index.html"><em class="fa fa-home">&nbsp;</em> หน้าหลัก</a></li>
+		<br><p class="back-link">SYSTEM MENU</p>
+
+		<li class=""><a href="index.html"><em class="fa fa-address-card-o">&nbsp;</em> ข้อมูลทะเบียนสมาชิก</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-briefcase">&nbsp;</em> หลักสูตรและโครงการฝึกอบรม</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-book">&nbsp;</em> คลังข้อสอบ</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-magic">&nbsp;</em> ประเมินและวัดผลความรู้</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-sign-language">&nbsp;</em> การออกใบประกาศนียบัตร</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-magic">&nbsp;</em> ประเมินคุณภาพการศึกษา</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-book">&nbsp;</em> หนังสืออิเล็กทรอนิกส์</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-file-video-o">&nbsp;</em> สื่อภาพเคลื่อนไหว</a></li>
+		<li class=""><a href="index.html"><em class="fa fa-book">&nbsp;</em> องค์ความรู้</a></li>
+
+
+		<br><p class="back-link">ADMIN MENU</p>
+
+		<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+			<em class="fa fa-navicon">&nbsp;</em> User management <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+		</a>
+		<ul class="children collapse" id="sub-item-1">
+			<li><a class="" href="#"><span class="fa fa-user">&nbsp;</span> User Group</a></li>
+			<li><a class="" href="#"><span class="fa fa-address-card-o">&nbsp;</span> Set User</a></li>
+			<li><a class="" href="#"><span class="fa fa-address-card-o">&nbsp;</span> Test Service</a></li>
+			<li></li>
+
+		</ul>
+	</li>
+</ul>
+</div><!--/.sidebar-->
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+	<div class="row">
+		<ol class="breadcrumb p2">
+			<li><a href="#" style="color: #d1d6de">
+				<em class="fa fa-home"></em>
+			</a>
+		</li>
+		<li class="active"  style="color: #d1d6de">Dashboard</li>
+	</ol>
+</div><br><!--/.row-->
+
+<!-- <div class="panel panel-container">
+	<div class="row">
+		<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+			<div class="panel panel-teal panel-widget border-right">
+				<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+					<div class="large">120</div>
+					<div class="text-muted">New Orders</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+			<div class="panel panel-blue panel-widget border-right">
+				<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
+					<div class="large">52</div>
+					<div class="text-muted">Comments</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+			<div class="panel panel-orange panel-widget border-right">
+				<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+					<div class="large">24</div>
+					<div class="text-muted">New Users</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+			<div class="panel panel-red panel-widget ">
+				<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
+					<div class="large">25.2k</div>
+					<div class="text-muted">Page Views</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Home
+			</div>
+			<div class="panel-body">
+				123
+			</div>
+		</div>
+	</div>
+</div><!--/.row-->
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<p class="back-link">กองบัญชาการศึกษา สํานักงานตํารวจแห่งชาติ</p>
+	</div>
+</div><!--/.row-->
+</div>	<!--/.main-->
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/easypiechart-data.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
