@@ -44,6 +44,14 @@ Run the repository readiness check script before going live:
 
 It verifies production-safe Web.config debug settings and runs a scoped first-party typo scan.
 
+For a broader non-mutating project dry run, use:
+
+```bash
+./scripts/dryrun_full_project.sh
+```
+
+This runs live readiness checks and duplicate cleanup scanning in dry-run mode.
+
 
 ## Release upgrades applied
 
