@@ -1,0 +1,32 @@
+name: Deploy to Staging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: windows-2022
+    environment: staging
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: zlms-prod-package
+          path: artifact
+
+      - name: Deploy to IIS (Web Deploy)
+        env:
+          WEB_DEPLOY_PUBLISH_PROFILE: ${{ secrets.STAGING_WEB_DEPLOY_PUBLISH_PROFILE }}
+        run: |
+          msdeploy.exe `
+            -source:package='${{ github.workspace }}\artifact\package.zip' `
+            -dest:auto,computerName="${{ secrets.STAGING_SERVER_NAME }}",userName="${{ secrets.STAGING_USERNAME }}",password="${{ secrets.STAGING_PASSWORD }}",authType=Basic `
+            -verb:sync `
+            -allowUntrusted `
+            -retryAttempts:3

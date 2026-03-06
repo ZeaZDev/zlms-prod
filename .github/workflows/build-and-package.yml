@@ -1,0 +1,45 @@
+name: Build & Package Artifact
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (optional)'
+        required: false
+
+jobs:
+  package:
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore packages
+        run: nuget restore zlms-prod.sln
+
+      - name: Build Release
+        run: msbuild zlms-prod.sln /p:Configuration=Release /p:Platform="Any CPU" /m
+
+      - name: Package Web Deploy
+        run: |
+          msbuild zlms-prod.csproj `
+            /t:Package `
+            /p:Configuration=Release `
+            /p:DeployOnBuild=true `
+            /p:DeployDefaultTarget=WebPublish `
+            /p:WebPublishMethod=Package `
+            /p:PackageAsSingleFile=true `
+            /p:SkipInvalidConfigurations=true `
+            /p:DesktopBuildPackageLocation="${{ github.workspace }}\artifact\package.zip"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zlms-prod-package
+          path: artifact/package.zip
+          retention-days: 7
