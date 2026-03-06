@@ -7,6 +7,7 @@
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -32,7 +33,16 @@ namespace newweb.Question
 
     protected void ShowMessage(string Message, Questiondetail.MessageType type)
     {
-      ScriptManager.RegisterStartupScript((Page) this, this.GetType(), Guid.NewGuid().ToString(), "ShowMessage('" + Message + "','" + (object) type + "');", true);
+      string str = HttpUtility.JavaScriptStringEncode(Message ?? string.Empty);
+      ScriptManager.RegisterStartupScript((Page) this, this.GetType(), Guid.NewGuid().ToString(), "ShowMessage('" + str + "','" + (object) type + "');", true);
+    }
+
+    private static int ParseRequiredInt(string value, string paramName)
+    {
+      int result;
+      if (!int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
+        throw new ArgumentException("Invalid integer value", paramName);
+      return result;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -228,7 +238,6 @@ namespace newweb.Question
 
     private void addGroup(string user)
     {
-      CConnect cconnect = new CConnect();
       string id = "";
       try
       {
@@ -237,8 +246,18 @@ namespace newweb.Question
       catch
       {
       }
-      string sql = "INSERT INTO [Questiongroup] ([Questionid],[QuestiongroupName],[Active],[Createdate],[Createby]) VALUES('" + id + "','" + user + "','1','" + (object) DateTime.Now + "','1')";
-      cconnect.sqlCmd(sql);
+      int requiredInt = Questiondetail.ParseRequiredInt(id, "ID");
+      SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cdas_conn"].ConnectionString);
+      connection.Open();
+      string cmdText = "INSERT INTO [Questiongroup] ([Questionid],[QuestiongroupName],[Active],[Createdate],[Createby]) VALUES(@Questionid,@QuestiongroupName,'1',@Createdate,'1')";
+      SqlCommand sqlCommand = new SqlCommand(cmdText, connection);
+      sqlCommand.CommandText = cmdText;
+      sqlCommand.Parameters.AddWithValue("@Questionid", (object) requiredInt);
+      sqlCommand.Parameters.AddWithValue("@QuestiongroupName", (object) user);
+      sqlCommand.Parameters.AddWithValue("@Createdate", (object) DateTime.Now);
+      sqlCommand.ExecuteNonQuery();
+      sqlCommand.Dispose();
+      connection.Close();
       this.SqlDataSource1.DataBind();
       try
       {
@@ -295,7 +314,6 @@ namespace newweb.Question
 
     private void addUser(string user)
     {
-      CConnect cconnect = new CConnect();
       string str1 = "";
       string str2 = "";
       string str3 = "1";
@@ -314,8 +332,25 @@ namespace newweb.Question
       {
       }
       str3 = this.search_actiontype(this.DropDownList3.Text);
-      string sql = "INSERT INTO [Question_detail] ([Question_id],[Question_detail],[Question_type],[Question_group],[Question_diff],[Question_weight]) VALUES('" + str4 + "','" + user + "','" + str2 + "','" + str1 + "','" + this.DropDownList1.Text + "','" + this.DropDownList3.Text + "')";
-      cconnect.sqlCmd(sql);
+      int requiredInt1 = Questiondetail.ParseRequiredInt(str4, "ID");
+      int requiredInt2 = Questiondetail.ParseRequiredInt(str2, "QuestionType");
+      int requiredInt3 = Questiondetail.ParseRequiredInt(str1, "QuestionGroup");
+      int requiredInt4 = Questiondetail.ParseRequiredInt(this.DropDownList1.Text, "QuestionDiff");
+      int requiredInt5 = Questiondetail.ParseRequiredInt(this.DropDownList3.Text, "QuestionWeight");
+      SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["cdas_conn"].ConnectionString);
+      connection.Open();
+      string cmdText = "INSERT INTO [Question_detail] ([Question_id],[Question_detail],[Question_type],[Question_group],[Question_diff],[Question_weight]) VALUES(@QuestionId,@QuestionDetail,@QuestionType,@QuestionGroup,@QuestionDiff,@QuestionWeight)";
+      SqlCommand sqlCommand = new SqlCommand(cmdText, connection);
+      sqlCommand.CommandText = cmdText;
+      sqlCommand.Parameters.AddWithValue("@QuestionId", (object) requiredInt1);
+      sqlCommand.Parameters.AddWithValue("@QuestionDetail", (object) user);
+      sqlCommand.Parameters.AddWithValue("@QuestionType", (object) requiredInt2);
+      sqlCommand.Parameters.AddWithValue("@QuestionGroup", (object) requiredInt3);
+      sqlCommand.Parameters.AddWithValue("@QuestionDiff", (object) requiredInt4);
+      sqlCommand.Parameters.AddWithValue("@QuestionWeight", (object) requiredInt5);
+      sqlCommand.ExecuteNonQuery();
+      sqlCommand.Dispose();
+      connection.Close();
     }
 
     public enum MessageType
