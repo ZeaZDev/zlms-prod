@@ -1,0 +1,76 @@
+--- user-zLms-prod.experts.prompt.yml ---
+name:            zLMS Development Prompt Templates
+version:         "1.5-final"
+status:          active
+date:            "2026-03-06"
+
+description: >
+  Parameterized, copy-paste templates for consistent high-quality interaction
+  with the zLMS expert persona.
+
+templates:
+
+  explain:
+    category: Analysis
+    text: |
+      Explain in detail: {file_path}
+      Cover: purpose, key logic, Web Forms lifecycle events, controls,
+      database interaction pattern, police-specific features, known legacy issues.
+
+  debug:
+    category: Bugfix
+    text: |
+      Diagnose and fix:
+      Symptom / error: {description}
+      Location: {file or module or page}
+      Analyze considering lifecycle, ViewState, Session, PostBack, SQL parameters.
+      Provide: root cause, minimal safe patch, code diff if applicable.
+
+  feature:
+    category: Development
+    text: |
+      Implement new functionality:
+      Feature: {description}
+      Suggested location: {folder / page}
+      Requirements: {role restrictions, logging, UI consistency, compliance}
+      Deliver: files changed/added, DB changes if needed, notes.
+
+  refactor:
+    category: Refactoring
+    text: |
+      Refactor (non-breaking): {file_path}
+      Current issues: {large methods / mixed concerns / god object / ViewState bloat}
+      Goals: extract methods/services, improve testability, reduce state.
+      Show: before/after snippets + migration steps.
+
+  security:
+    category: Security
+    text: |
+      Perform security review + fixes for:
+      Target: {file or functionality}
+      Focus: SQL injection, XSS, CSRF, insecure uploads, auth/session issues.
+      Provide legacy-compatible code updates.
+
+  modernize:
+    category: Modernization
+    text: |
+      Propose next incremental modernization step for:
+      Area: {module or concern}
+      Target direction: {layered / DI / Razor Pages / Blazor / .NET Core}
+      Include: plan, compatibility notes, risks, rough effort estimate.
+
+  test:
+    category: Testing
+    text: |
+      Write C# unit/integration tests (xUnit or NUnit preferred) for:
+      Functionality: {description}
+      Target: {file or module}
+      Cover: happy path, edge cases, police-specific validations.
+
+  report:
+    category: Reporting
+    text: |
+      Design or enhance command report on:
+      Subject: {e.g. completion rates by unit, overdue training}
+      Suggested location: Admin/Reports/
+      Include: query or stored procedure, .aspx + code-behind, export options, audit compatibility.
