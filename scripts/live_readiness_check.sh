@@ -70,6 +70,10 @@ print('PASS: no known typo patterns found in first-party scoped files')
 PY
 
 echo "[4/4] Checking git working tree includes only intentional files..."
-git status --short
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  git status --short
+else
+  echo "WARN: not running inside a git work tree; skipping git status check"
+fi
 
 echo "Live readiness checks completed."
