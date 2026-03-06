@@ -50,3 +50,9 @@ It verifies production-safe Web.config debug settings and runs a scoped first-pa
 - `app/Web.config` now runs with `debug="false"` and `customErrors mode="On"` for production-safe behavior.
 - Added `app/Web.Release.config` to enforce release transform defaults during publish.
 - Extended `scripts/live_readiness_check.sh` to verify release transform presence and `customErrors` release posture.
+
+## Maintenance automation
+
+- `./scripts/clean_duplicate_files.sh` scans for backup/copy/tmp files with identical content and removes redundant duplicates with `--apply`.
+- `./scripts/generate_installer.sh` packages the project into `dist/zlms-payload.tar.gz` and generates `dist/zlms-installer.sh` for repeatable installs.
+
