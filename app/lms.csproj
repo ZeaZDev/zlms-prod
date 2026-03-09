@@ -5576,6 +5576,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MissingExternalDependencies.Stubs.cs" />
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
