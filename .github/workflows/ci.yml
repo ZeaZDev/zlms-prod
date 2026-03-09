@@ -37,3 +37,103 @@ jobs:
             --no-restore `
             --logger "console;verbosity=normal" `
             || true
+
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Find Android-capable projects
+        id: detect_android
+        shell: bash
+        run: |
+          set -euo pipefail
+          android_projects=$(find . -name '*.csproj' -print0 | xargs -0 -r rg -l '<TargetFrameworks?>[^<]*android' || true)
+          if [ -z "$android_projects" ]; then
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "No Android target frameworks found in this repository."
+          else
+            {
+              echo 'found=true'
+              echo 'projects<<EOF'
+              echo "$android_projects"
+              echo 'EOF'
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Android workload
+        if: steps.detect_android.outputs.found == 'true'
+        run: dotnet workload install maui-android
+
+      - name: Build Android projects
+        if: steps.detect_android.outputs.found == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r project; do
+            [ -z "$project" ] && continue
+            echo "Building $project for Android"
+            dotnet build "$project" -c Release -f net8.0-android
+          done <<< "${{ steps.detect_android.outputs.projects }}"
+
+      - name: Skip note (no Android project found)
+        if: steps.detect_android.outputs.found != 'true'
+        run: echo "Android build skipped because no Android-capable project was detected."
+
+  build-ios:
+    name: Build iOS
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Find iOS-capable projects
+        id: detect_ios
+        shell: bash
+        run: |
+          set -euo pipefail
+          ios_projects=$(find . -name '*.csproj' -print0 | xargs -0 -r rg -l '<TargetFrameworks?>[^<]*ios' || true)
+          if [ -z "$ios_projects" ]; then
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "No iOS target frameworks found in this repository."
+          else
+            {
+              echo 'found=true'
+              echo 'projects<<EOF'
+              echo "$ios_projects"
+              echo 'EOF'
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install iOS workload
+        if: steps.detect_ios.outputs.found == 'true'
+        run: dotnet workload install maui-ios
+
+      - name: Build iOS projects
+        if: steps.detect_ios.outputs.found == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r project; do
+            [ -z "$project" ] && continue
+            echo "Building $project for iOS"
+            dotnet build "$project" -c Release -f net8.0-ios
+          done <<< "${{ steps.detect_ios.outputs.projects }}"
+
+      - name: Skip note (no iOS project found)
+        if: steps.detect_ios.outputs.found != 'true'
+        run: echo "iOS build skipped because no iOS-capable project was detected."
