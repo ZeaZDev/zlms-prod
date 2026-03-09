@@ -7,7 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR"
 APP_DIR="$PROJECT_ROOT/app"
-VENDOR_DIR="$(cd "$APP_DIR/../.." && pwd)/lms-library"
+VENDOR_DIR="$(realpath -m "$APP_DIR/../../lms-library")"
 
 if [[ ! -f "$APP_DIR/lms.csproj" ]]; then
   echo "Error: app/lms.csproj not found. Run this script from repository root." >&2
@@ -136,6 +136,7 @@ Run locally with:
 
 If vendor DLL warnings appeared, place licensed DevExpress 14.2 binaries
 under the path expected by lms.csproj: $VENDOR_DIR
+(relative HintPath from app/lms.csproj: ../../lms-library)
 
 Tip: you can automate placement by running:
   DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh
