@@ -21,18 +21,52 @@ fi
 
 echo "==> Installing system dependencies"
 $SUDO apt-get update
-$SUDO apt-get install -y \
-  mono-complete \
-  mono-xsp4 \
-  msbuild \
-  nuget \
-  unzip
+
+package_available() {
+  local pkg="$1"
+  local candidate
+  candidate="$(apt-cache policy "$pkg" | awk -F': ' '/Candidate:/ {print $2; exit}')"
+  [[ -n "$candidate" && "$candidate" != "(none)" ]]
+}
+
+PKGS=(mono-complete mono-xsp4 unzip curl)
+if package_available msbuild; then
+  PKGS+=(msbuild)
+fi
+if package_available nuget; then
+  PKGS+=(nuget)
+fi
+
+$SUDO apt-get install -y "${PKGS[@]}"
+
+if command -v msbuild >/dev/null 2>&1; then
+  BUILD_TOOL="msbuild"
+elif command -v xbuild >/dev/null 2>&1; then
+  BUILD_TOOL="xbuild"
+  echo "[WARN] msbuild is unavailable on this distro; falling back to xbuild."
+else
+  echo "Error: neither msbuild nor xbuild is available after dependency installation." >&2
+  exit 1
+fi
+
+if command -v nuget >/dev/null 2>&1; then
+  NUGET_CMD=(nuget)
+else
+  echo "[WARN] nuget package is unavailable; bootstrapping nuget.exe locally."
+  TOOLS_DIR="$PROJECT_ROOT/.tools"
+  NUGET_EXE="$TOOLS_DIR/nuget.exe"
+  mkdir -p "$TOOLS_DIR"
+  if [[ ! -f "$NUGET_EXE" ]]; then
+    curl -fsSL https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -o "$NUGET_EXE"
+  fi
+  NUGET_CMD=(mono "$NUGET_EXE")
+fi
 
 echo "==> Restoring NuGet packages"
 if [[ -f "$APP_DIR/packages.config" ]]; then
-  nuget restore "$APP_DIR/packages.config" -PackagesDirectory "$PROJECT_ROOT/packages"
+  "${NUGET_CMD[@]}" restore "$APP_DIR/packages.config" -PackagesDirectory "$PROJECT_ROOT/packages"
 else
-  nuget restore "$APP_DIR/lms.csproj" || true
+  "${NUGET_CMD[@]}" restore "$APP_DIR/lms.csproj" || true
 fi
 
 echo "==> Validating external binary prerequisites"
@@ -48,7 +82,7 @@ for dll in \
 done
 
 echo "==> Building project"
-msbuild "$APP_DIR/lms.csproj" /p:Configuration=Release
+"$BUILD_TOOL" "$APP_DIR/lms.csproj" /p:Configuration=Release
 
 cat <<MSG
 
