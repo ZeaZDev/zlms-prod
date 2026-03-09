@@ -34,6 +34,19 @@ A full-repo spellcheck was performed with a conservative approach:
   - Updated user-facing error text by correcting a misspelling in the upload error message.
 
 
+## Full project update
+
+For a one-command maintenance run across readiness checks, duplicate scanning, and structure verification:
+
+```bash
+./scripts/update_full_project.sh
+```
+
+Optional flags:
+
+- `--apply-duplicates` removes duplicate backup/copy files.
+- `--rebuild-installer` regenerates installer artifacts in `dist/`.
+
 ## Live readiness proof checks
 
 Run the repository readiness check script before going live:
