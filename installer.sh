@@ -7,6 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR"
 APP_DIR="$PROJECT_ROOT/app"
+VENDOR_DIR="$(cd "$APP_DIR/../.." && pwd)/lms-library"
 
 if [[ ! -f "$APP_DIR/lms.csproj" ]]; then
   echo "Error: app/lms.csproj not found. Run this script from repository root." >&2
@@ -70,12 +71,53 @@ else
 fi
 
 echo "==> Validating external binary prerequisites"
+DEVEXPRESS_DLLS=(
+  DevExpress.Charts.v14.2.Core.dll
+  DevExpress.CodeParser.v14.2.dll
+  DevExpress.Data.v14.2.dll
+  DevExpress.Office.v14.2.Core.dll
+  DevExpress.PivotGrid.v14.2.Core.dll
+  DevExpress.Printing.v14.2.Core.dll
+  DevExpress.RichEdit.v14.2.Core.dll
+  DevExpress.Sparkline.v14.2.Core.dll
+  DevExpress.Web.ASPxScheduler.v14.2.dll
+  DevExpress.Web.ASPxThemes.v14.2.dll
+  DevExpress.Web.ASPxTreeList.v14.2.dll
+  DevExpress.Web.v14.2.dll
+  DevExpress.XtraCharts.v14.2.dll
+  DevExpress.XtraGauges.v14.2.Core.dll
+  DevExpress.XtraReports.v14.2.dll
+  DevExpress.XtraReports.v14.2.Web.dll
+  DevExpress.XtraScheduler.v14.2.dll
+  DevExpress.XtraScheduler.v14.2.Core.dll
+)
+
+if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
+  mkdir -p "$VENDOR_DIR"
+  if [[ -d "$DEVEXPRESS_SOURCE" ]]; then
+    for dll in "${DEVEXPRESS_DLLS[@]}"; do
+      src_dll="$(find "$DEVEXPRESS_SOURCE" -maxdepth 4 -type f -name "$dll" | head -n 1 || true)"
+      if [[ -n "$src_dll" ]]; then
+        cp -f "$src_dll" "$VENDOR_DIR/$dll"
+      fi
+    done
+  elif [[ -f "$DEVEXPRESS_SOURCE" && "$DEVEXPRESS_SOURCE" == *.zip ]]; then
+    unzip -oqq "$DEVEXPRESS_SOURCE" "*.dll" -d "$VENDOR_DIR/.extract_tmp"
+    for dll in "${DEVEXPRESS_DLLS[@]}"; do
+      src_dll="$(find "$VENDOR_DIR/.extract_tmp" -type f -name "$dll" | head -n 1 || true)"
+      if [[ -n "$src_dll" ]]; then
+        cp -f "$src_dll" "$VENDOR_DIR/$dll"
+      fi
+    done
+    rm -rf "$VENDOR_DIR/.extract_tmp"
+  else
+    echo "  [WARN] DEVEXPRESS_SOURCE is set but is neither a directory nor a .zip file: $DEVEXPRESS_SOURCE"
+  fi
+fi
+
 MISSING=0
-for dll in \
-  DevExpress.Web.v14.2.dll \
-  DevExpress.Data.v14.2.dll \
-  DevExpress.XtraReports.v14.2.dll; do
-  if ! find "$PROJECT_ROOT" -maxdepth 4 -name "$dll" | grep -q .; then
+for dll in "${DEVEXPRESS_DLLS[@]}"; do
+  if [[ ! -f "$VENDOR_DIR/$dll" ]]; then
     echo "  [WARN] Missing required vendor DLL: $dll"
     MISSING=1
   fi
@@ -93,7 +135,10 @@ Run locally with:
   xsp4 --port 8080
 
 If vendor DLL warnings appeared, place licensed DevExpress 14.2 binaries
-under the path expected by lms.csproj (e.g. ../../lms-library).
+under the path expected by lms.csproj: $VENDOR_DIR
+
+Tip: you can automate placement by running:
+  DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh
 MSG
 
 if [[ "$MISSING" -eq 1 ]]; then
