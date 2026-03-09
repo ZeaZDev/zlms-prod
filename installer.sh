@@ -7,6 +7,13 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR"
 APP_DIR="$PROJECT_ROOT/app"
+DEVEXPRESS_TARGET_DIR="$(cd "$PROJECT_ROOT/../.." && pwd)/lms-library"
+
+REQUIRED_VENDOR_DLLS=(
+  DevExpress.Web.v14.2.dll
+  DevExpress.Data.v14.2.dll
+  DevExpress.XtraReports.v14.2.dll
+)
 
 if [[ ! -f "$APP_DIR/lms.csproj" ]]; then
   echo "Error: app/lms.csproj not found. Run this script from repository root." >&2
@@ -69,17 +76,89 @@ else
   "${NUGET_CMD[@]}" restore "$APP_DIR/lms.csproj" || true
 fi
 
+place_devexpress_binaries() {
+  local source_path="$1"
+
+  if [[ ! -e "$source_path" ]]; then
+    echo "[WARN] DEVEXPRESS_SOURCE does not exist: $source_path"
+    return
+  fi
+
+  mkdir -p "$DEVEXPRESS_TARGET_DIR"
+
+  if [[ -d "$source_path" ]]; then
+    local copied=0
+    local dll
+    for dll in "${REQUIRED_VENDOR_DLLS[@]}"; do
+      local match
+      match="$(find "$source_path" -type f -name "$dll" -print -quit)"
+      if [[ -n "$match" ]]; then
+        cp -f "$match" "$DEVEXPRESS_TARGET_DIR/$dll"
+        copied=$((copied + 1))
+      fi
+    done
+    echo "  [INFO] Imported $copied required DevExpress DLL(s) from directory source."
+    return
+  fi
+
+  case "$source_path" in
+    *.zip)
+      python3 - "$source_path" "$DEVEXPRESS_TARGET_DIR" "${REQUIRED_VENDOR_DLLS[@]}" <<'PY'
+import os
+import shutil
+import sys
+import tempfile
+import zipfile
+
+zip_path = sys.argv[1]
+out_dir = sys.argv[2]
+required = set(sys.argv[3:])
+
+copied = 0
+with zipfile.ZipFile(zip_path) as zf:
+    infos = [i for i in zf.infolist() if not i.is_dir()]
+    by_basename = {}
+    for info in infos:
+        base = os.path.basename(info.filename)
+        if base in required and base not in by_basename:
+            by_basename[base] = info
+
+    with tempfile.TemporaryDirectory() as td:
+        for dll in sorted(required):
+            info = by_basename.get(dll)
+            if info is None:
+                continue
+            extracted = zf.extract(info, path=td)
+            dest = os.path.join(out_dir, dll)
+            shutil.copyfile(extracted, dest)
+            copied += 1
+
+print(f"  [INFO] Imported {copied} required DevExpress DLL(s) from zip source.")
+PY
+      ;;
+    *)
+      echo "[WARN] DEVEXPRESS_SOURCE is not a directory or zip file: $source_path"
+      ;;
+  esac
+}
+
+if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
+  echo "==> Importing DevExpress binaries from DEVEXPRESS_SOURCE"
+  place_devexpress_binaries "$DEVEXPRESS_SOURCE"
+fi
+
 echo "==> Validating external binary prerequisites"
 MISSING=0
-for dll in \
-  DevExpress.Web.v14.2.dll \
-  DevExpress.Data.v14.2.dll \
-  DevExpress.XtraReports.v14.2.dll; do
-  if ! find "$PROJECT_ROOT" -maxdepth 4 -name "$dll" | grep -q .; then
+for dll in "${REQUIRED_VENDOR_DLLS[@]}"; do
+  if [[ ! -f "$DEVEXPRESS_TARGET_DIR/$dll" ]]; then
     echo "  [WARN] Missing required vendor DLL: $dll"
     MISSING=1
   fi
 done
+
+if [[ "$MISSING" -eq 0 ]]; then
+  echo "  [OK] Required vendor DLLs were found in $DEVEXPRESS_TARGET_DIR"
+fi
 
 echo "==> Building project"
 "$BUILD_TOOL" "$APP_DIR/lms.csproj" /p:Configuration=Release
@@ -93,7 +172,10 @@ Run locally with:
   xsp4 --port 8080
 
 If vendor DLL warnings appeared, place licensed DevExpress 14.2 binaries
-under the path expected by lms.csproj (e.g. ../../lms-library).
+under the path expected by lms.csproj: $DEVEXPRESS_TARGET_DIR
+
+Tip: you can automate placement by running:
+  DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh
 MSG
 
 if [[ "$MISSING" -eq 1 ]]; then
