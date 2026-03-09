@@ -7,6 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR"
 APP_DIR="$PROJECT_ROOT/app"
+DEVEXPRESS_TARGET_DIR="$(cd "$PROJECT_ROOT/../.." && pwd)/lms-library"
 
 if [[ ! -f "$APP_DIR/lms.csproj" ]]; then
   echo "Error: app/lms.csproj not found. Run this script from repository root." >&2
@@ -69,6 +70,30 @@ else
   "${NUGET_CMD[@]}" restore "$APP_DIR/lms.csproj" || true
 fi
 
+place_devexpress_binaries() {
+  local source_path="$1"
+  mkdir -p "$DEVEXPRESS_TARGET_DIR"
+
+  if [[ -d "$source_path" ]]; then
+    find "$source_path" -maxdepth 2 -type f -name 'DevExpress*.dll' -exec cp -f {} "$DEVEXPRESS_TARGET_DIR/" \;
+    return
+  fi
+
+  case "$source_path" in
+    *.zip)
+      unzip -o -j "$source_path" '*/DevExpress*.dll' 'DevExpress*.dll' -d "$DEVEXPRESS_TARGET_DIR" >/dev/null
+      ;;
+    *)
+      echo "[WARN] DEVEXPRESS_SOURCE is not a directory or zip file: $source_path"
+      ;;
+  esac
+}
+
+if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
+  echo "==> Importing DevExpress binaries from DEVEXPRESS_SOURCE"
+  place_devexpress_binaries "$DEVEXPRESS_SOURCE"
+fi
+
 echo "==> Validating external binary prerequisites"
 MISSING=0
 for dll in \
@@ -80,6 +105,10 @@ for dll in \
     MISSING=1
   fi
 done
+
+if [[ "$MISSING" -eq 0 ]]; then
+  echo "  [OK] Required vendor DLLs were found."
+fi
 
 echo "==> Building project"
 "$BUILD_TOOL" "$APP_DIR/lms.csproj" /p:Configuration=Release
@@ -93,7 +122,10 @@ Run locally with:
   xsp4 --port 8080
 
 If vendor DLL warnings appeared, place licensed DevExpress 14.2 binaries
-under the path expected by lms.csproj (e.g. ../../lms-library).
+under the path expected by lms.csproj: $DEVEXPRESS_TARGET_DIR
+
+Tip: you can automate placement by running:
+  DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh
 MSG
 
 if [[ "$MISSING" -eq 1 ]]; then
