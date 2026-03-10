@@ -30,15 +30,33 @@ package_available() {
   [[ -n "$candidate" && "$candidate" != "(none)" ]]
 }
 
-PKGS=(mono-complete mono-xsp4 unzip curl)
-if package_available msbuild; then
-  PKGS+=(msbuild)
-fi
-if package_available nuget; then
-  PKGS+=(nuget)
-fi
+PKGS=()
+REQ_PKGS=(mono-complete unzip curl)
+OPT_PKGS=(mono-xsp4 msbuild nuget)
+
+for pkg in "${REQ_PKGS[@]}"; do
+  if package_available "$pkg"; then
+    PKGS+=("$pkg")
+  else
+    echo "Error: required package '$pkg' is unavailable in configured apt repositories." >&2
+    exit 1
+  fi
+done
+
+for pkg in "${OPT_PKGS[@]}"; do
+  if package_available "$pkg"; then
+    PKGS+=("$pkg")
+  else
+    echo "[WARN] Optional package '$pkg' is unavailable; continuing with fallback behavior."
+  fi
+done
 
 $SUDO apt-get install -y "${PKGS[@]}"
+
+if ! command -v xsp4 >/dev/null 2>&1; then
+  echo "[WARN] xsp4 command is unavailable (mono-xsp4 package missing on this distro)."
+  echo "       Build can still proceed, but local hosting via xsp4 will not be available."
+fi
 
 if command -v msbuild >/dev/null 2>&1; then
   BUILD_TOOL="msbuild"
