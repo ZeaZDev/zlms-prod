@@ -89,26 +89,14 @@ else
 fi
 
 echo "==> Validating external binary prerequisites"
-DEVEXPRESS_DLLS=(
-  DevExpress.Charts.v14.2.Core.dll
-  DevExpress.CodeParser.v14.2.dll
-  DevExpress.Data.v14.2.dll
-  DevExpress.Office.v14.2.Core.dll
-  DevExpress.PivotGrid.v14.2.Core.dll
-  DevExpress.Printing.v14.2.Core.dll
-  DevExpress.RichEdit.v14.2.Core.dll
-  DevExpress.Sparkline.v14.2.Core.dll
-  DevExpress.Web.ASPxScheduler.v14.2.dll
-  DevExpress.Web.ASPxThemes.v14.2.dll
-  DevExpress.Web.ASPxTreeList.v14.2.dll
-  DevExpress.Web.v14.2.dll
-  DevExpress.XtraCharts.v14.2.dll
-  DevExpress.XtraGauges.v14.2.Core.dll
-  DevExpress.XtraReports.v14.2.dll
-  DevExpress.XtraReports.v14.2.Web.dll
-  DevExpress.XtraScheduler.v14.2.dll
-  DevExpress.XtraScheduler.v14.2.Core.dll
+mapfile -t DEVEXPRESS_DLLS < <(
+  awk '/<HintPath>/ && /lms-library/ && /.dll<\/HintPath>/ { line=$0; sub(/^.*lms-library\\/, "", line); sub(/<\/HintPath>.*/, "", line); print line }' "$APP_DIR/lms.csproj" | sort -u
 )
+
+if [[ "${#DEVEXPRESS_DLLS[@]}" -eq 0 ]]; then
+  echo "Error: no DevExpress DLL references were found in $APP_DIR/lms.csproj." >&2
+  exit 1
+fi
 
 if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
   mkdir -p "$VENDOR_DIR"
@@ -152,7 +140,7 @@ Run locally with:
   cd app
   xsp4 --port 8080
 
-If vendor DLL warnings appeared, place licensed DevExpress 14.2 binaries
+If vendor DLL warnings appeared, place licensed DevExpress binaries referenced by app/lms.csproj
 under the path expected by lms.csproj: $VENDOR_DIR
 (relative HintPath from app/lms.csproj: ../../lms-library)
 

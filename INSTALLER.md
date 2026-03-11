@@ -10,7 +10,7 @@ This repository now includes an automated installer script:
 
 1. Installs Linux dependencies for this legacy ASP.NET WebForms project (`mono`, etc.), treating `mono-xsp4`, `msbuild`, and `nuget` as optional packages when unavailable on newer distros.
 2. Restores NuGet packages.
-3. Checks for required DevExpress 14.2 vendor DLLs.
+3. Checks for required DevExpress vendor DLLs referenced by `app/lms.csproj`.
 4. Builds `app/lms.csproj` in `Release` configuration.
 
 ## Notes
