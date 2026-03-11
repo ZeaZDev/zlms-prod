@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#"   MasterPageFile="~/Police.Master" AutoEventWireup="true" CodeBehind="Coursecalenda.aspx.cs" Inherits="newweb.Course.Coursecalenda" %>
 
-<%@ Register assembly="DevExpress.Web.ASPxScheduler.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxScheduler" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="cc1" %>
+<%@ Register assembly="DevExpress.Web.ASPxScheduler.v16.2, Version=16.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxScheduler" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.XtraScheduler.v16.2.Core, Version=16.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
