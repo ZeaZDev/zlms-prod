@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#"  MasterPageFile="~/Police.Master" AutoEventWireup="true" CodeBehind="treeview.aspx.cs" Inherits="newweb.QA.treeview" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v18.2, Version=18.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v16.2, Version=16.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

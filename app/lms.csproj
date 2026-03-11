@@ -46,59 +46,59 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.Charts.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Charts.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.Charts.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.CodeParser.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.CodeParser.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.CodeParser.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.Data.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.Data.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.Data.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Office.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.Office.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Office.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.Office.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.PivotGrid.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.PivotGrid.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.PivotGrid.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.Printing.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Printing.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.Printing.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.RichEdit.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.RichEdit.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.RichEdit.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Sparkline.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.Sparkline.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Sparkline.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.Sparkline.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxScheduler.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.Web.ASPxScheduler.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxScheduler.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.Web.ASPxScheduler.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxThemes.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.Web.ASPxThemes.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.Web.ASPxThemes.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxTreeList.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.Web.ASPxTreeList.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.Web.ASPxTreeList.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.Web.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.Web.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.Web.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.XtraCharts.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.XtraCharts.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.XtraCharts.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.XtraGauges.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.XtraGauges.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.XtraGauges.v16.2.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.XtraReports.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.XtraReports.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.XtraReports.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v14.2.Web">
-      <HintPath>..\..\lms-library\DevExpress.XtraReports.v14.2.Web.dll</HintPath>
+    <Reference Include="DevExpress.XtraReports.v16.2.Web">
+      <HintPath>..\..\lms-library\DevExpress.XtraReports.v16.2.Web.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v14.2">
-      <HintPath>..\..\lms-library\DevExpress.XtraScheduler.v14.2.dll</HintPath>
+    <Reference Include="DevExpress.XtraScheduler.v16.2">
+      <HintPath>..\..\lms-library\DevExpress.XtraScheduler.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v14.2.Core">
-      <HintPath>..\..\lms-library\DevExpress.XtraScheduler.v14.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.XtraScheduler.v16.2.Core">
+      <HintPath>..\..\lms-library\DevExpress.XtraScheduler.v16.2.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
