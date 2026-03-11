@@ -77,12 +77,12 @@ This runs live readiness checks and duplicate cleanup scanning in dry-run mode.
 - `./scripts/clean_duplicate_files.sh` scans for backup/copy/tmp files with identical content and removes redundant duplicates with `--apply`.
 - `./scripts/generate_installer.sh` packages the project into `dist/zlms-payload.tar.gz` and generates `dist/zlms-installer.sh` for repeatable installs.
 
-## DevExpress 14.2 binaries
+## DevExpress 16.2 binaries
 
-This project references licensed DevExpress 14.2 assemblies via `../../lms-library` from `app/lms.csproj`.
+This project references licensed DevExpress 16.2 assemblies via `../../lms-library` from `app/lms.csproj`.
 
 - Expected absolute path when the repo lives at `/path/to/zlms-prod`: `/path/lms-library`
-- Required examples: `DevExpress.Web.v14.2.dll`, `DevExpress.Data.v14.2.dll`, `DevExpress.XtraReports.v14.2.dll`
+- Required examples: `DevExpress.Web.v16.2.dll`, `DevExpress.Data.v16.2.dll`, `DevExpress.XtraReports.v16.2.dll`
 
 You can place binaries manually, or let the installer import them from a folder/zip:
 
