@@ -88,6 +88,77 @@ else
   "${NUGET_CMD[@]}" restore "$APP_DIR/lms.csproj" || true
 fi
 
+place_devexpress_binaries() {
+  local source_path="$1"
+
+  if [[ ! -e "$source_path" ]]; then
+    echo "[WARN] DEVEXPRESS_SOURCE does not exist: $source_path"
+    return
+  fi
+
+  mkdir -p "$DEVEXPRESS_TARGET_DIR"
+
+  if [[ -d "$source_path" ]]; then
+    local copied=0
+    local dll
+    for dll in "${REQUIRED_VENDOR_DLLS[@]}"; do
+      local match
+      match="$(find "$source_path" -type f -name "$dll" -print -quit)"
+      if [[ -n "$match" ]]; then
+        cp -f "$match" "$DEVEXPRESS_TARGET_DIR/$dll"
+        copied=$((copied + 1))
+      fi
+    done
+    echo "  [INFO] Imported $copied required DevExpress DLL(s) from directory source."
+    return
+  fi
+
+  case "$source_path" in
+    *.zip)
+      python3 - "$source_path" "$DEVEXPRESS_TARGET_DIR" "${REQUIRED_VENDOR_DLLS[@]}" <<'PY'
+import os
+import shutil
+import sys
+import tempfile
+import zipfile
+
+zip_path = sys.argv[1]
+out_dir = sys.argv[2]
+required = set(sys.argv[3:])
+
+copied = 0
+with zipfile.ZipFile(zip_path) as zf:
+    infos = [i for i in zf.infolist() if not i.is_dir()]
+    by_basename = {}
+    for info in infos:
+        base = os.path.basename(info.filename)
+        if base in required and base not in by_basename:
+            by_basename[base] = info
+
+    with tempfile.TemporaryDirectory() as td:
+        for dll in sorted(required):
+            info = by_basename.get(dll)
+            if info is None:
+                continue
+            extracted = zf.extract(info, path=td)
+            dest = os.path.join(out_dir, dll)
+            shutil.copyfile(extracted, dest)
+            copied += 1
+
+print(f"  [INFO] Imported {copied} required DevExpress DLL(s) from zip source.")
+PY
+      ;;
+    *)
+      echo "[WARN] DEVEXPRESS_SOURCE is not a directory or zip file: $source_path"
+      ;;
+  esac
+}
+
+if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
+  echo "==> Importing DevExpress binaries from DEVEXPRESS_SOURCE"
+  place_devexpress_binaries "$DEVEXPRESS_SOURCE"
+fi
+
 echo "==> Validating external binary prerequisites"
 mapfile -t DEVEXPRESS_DLLS < <(
   awk '/<HintPath>/ && /lms-library/ && /.dll<\/HintPath>/ { line=$0; sub(/^.*lms-library\\/, "", line); sub(/<\/HintPath>.*/, "", line); print line }' "$APP_DIR/lms.csproj" | sort -u
@@ -128,6 +199,10 @@ for dll in "${DEVEXPRESS_DLLS[@]}"; do
     MISSING=1
   fi
 done
+
+if [[ "$MISSING" -eq 0 ]]; then
+  echo "  [OK] Required vendor DLLs were found in $DEVEXPRESS_TARGET_DIR"
+fi
 
 echo "==> Building project"
 "$BUILD_TOOL" "$APP_DIR/lms.csproj" /p:Configuration=Release
