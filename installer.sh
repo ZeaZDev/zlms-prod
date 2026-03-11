@@ -7,13 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR"
 APP_DIR="$PROJECT_ROOT/app"
-DEVEXPRESS_TARGET_DIR="$(cd "$PROJECT_ROOT/../.." && pwd)/lms-library"
-
-REQUIRED_VENDOR_DLLS=(
-  DevExpress.Web.v14.2.dll
-  DevExpress.Data.v14.2.dll
-  DevExpress.XtraReports.v14.2.dll
-)
+VENDOR_DIR="$(realpath -m "$APP_DIR/../../lms-library")"
 
 if [[ ! -f "$APP_DIR/lms.csproj" ]]; then
   echo "Error: app/lms.csproj not found. Run this script from repository root." >&2
@@ -36,15 +30,33 @@ package_available() {
   [[ -n "$candidate" && "$candidate" != "(none)" ]]
 }
 
-PKGS=(mono-complete mono-xsp4 unzip curl)
-if package_available msbuild; then
-  PKGS+=(msbuild)
-fi
-if package_available nuget; then
-  PKGS+=(nuget)
-fi
+PKGS=()
+REQ_PKGS=(mono-complete unzip curl)
+OPT_PKGS=(mono-xsp4 msbuild nuget)
+
+for pkg in "${REQ_PKGS[@]}"; do
+  if package_available "$pkg"; then
+    PKGS+=("$pkg")
+  else
+    echo "Error: required package '$pkg' is unavailable in configured apt repositories." >&2
+    exit 1
+  fi
+done
+
+for pkg in "${OPT_PKGS[@]}"; do
+  if package_available "$pkg"; then
+    PKGS+=("$pkg")
+  else
+    echo "[WARN] Optional package '$pkg' is unavailable; continuing with fallback behavior."
+  fi
+done
 
 $SUDO apt-get install -y "${PKGS[@]}"
+
+if ! command -v xsp4 >/dev/null 2>&1; then
+  echo "[WARN] xsp4 command is unavailable (mono-xsp4 package missing on this distro)."
+  echo "       Build can still proceed, but local hosting via xsp4 will not be available."
+fi
 
 if command -v msbuild >/dev/null 2>&1; then
   BUILD_TOOL="msbuild"
@@ -148,9 +160,41 @@ if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
 fi
 
 echo "==> Validating external binary prerequisites"
+mapfile -t DEVEXPRESS_DLLS < <(
+  awk '/<HintPath>/ && /lms-library/ && /.dll<\/HintPath>/ { line=$0; sub(/^.*lms-library\\/, "", line); sub(/<\/HintPath>.*/, "", line); print line }' "$APP_DIR/lms.csproj" | sort -u
+)
+
+if [[ "${#DEVEXPRESS_DLLS[@]}" -eq 0 ]]; then
+  echo "Error: no DevExpress DLL references were found in $APP_DIR/lms.csproj." >&2
+  exit 1
+fi
+
+if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
+  mkdir -p "$VENDOR_DIR"
+  if [[ -d "$DEVEXPRESS_SOURCE" ]]; then
+    for dll in "${DEVEXPRESS_DLLS[@]}"; do
+      src_dll="$(find "$DEVEXPRESS_SOURCE" -maxdepth 4 -type f -name "$dll" | head -n 1 || true)"
+      if [[ -n "$src_dll" ]]; then
+        cp -f "$src_dll" "$VENDOR_DIR/$dll"
+      fi
+    done
+  elif [[ -f "$DEVEXPRESS_SOURCE" && "$DEVEXPRESS_SOURCE" == *.zip ]]; then
+    unzip -oqq "$DEVEXPRESS_SOURCE" "*.dll" -d "$VENDOR_DIR/.extract_tmp"
+    for dll in "${DEVEXPRESS_DLLS[@]}"; do
+      src_dll="$(find "$VENDOR_DIR/.extract_tmp" -type f -name "$dll" | head -n 1 || true)"
+      if [[ -n "$src_dll" ]]; then
+        cp -f "$src_dll" "$VENDOR_DIR/$dll"
+      fi
+    done
+    rm -rf "$VENDOR_DIR/.extract_tmp"
+  else
+    echo "  [WARN] DEVEXPRESS_SOURCE is set but is neither a directory nor a .zip file: $DEVEXPRESS_SOURCE"
+  fi
+fi
+
 MISSING=0
-for dll in "${REQUIRED_VENDOR_DLLS[@]}"; do
-  if [[ ! -f "$DEVEXPRESS_TARGET_DIR/$dll" ]]; then
+for dll in "${DEVEXPRESS_DLLS[@]}"; do
+  if [[ ! -f "$VENDOR_DIR/$dll" ]]; then
     echo "  [WARN] Missing required vendor DLL: $dll"
     MISSING=1
   fi
@@ -171,8 +215,9 @@ Run locally with:
   cd app
   xsp4 --port 8080
 
-If vendor DLL warnings appeared, place licensed DevExpress 14.2 binaries
-under the path expected by lms.csproj: $DEVEXPRESS_TARGET_DIR
+If vendor DLL warnings appeared, place licensed DevExpress binaries referenced by app/lms.csproj
+under the path expected by lms.csproj: $VENDOR_DIR
+(relative HintPath from app/lms.csproj: ../../lms-library)
 
 Tip: you can automate placement by running:
   DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh
