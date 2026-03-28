@@ -11,7 +11,7 @@ HTTP_CODE="$(curl -sS -D "$TMP_HEADERS" -o "$TMP_BODY" -w '%{http_code}' "$TARGE
 echo "[probe] URL: $TARGET_URL"
 echo "[probe] HTTP status: $HTTP_CODE"
 
-CONTENT_TYPE="$(awk -F': ' 'tolower($1)=="content-type"{print $2}' "$TMP_HEADERS" | tr -d '\r' | tail -n1)"
+CONTENT_TYPE="$(grep -i '^content-type:' "$TMP_HEADERS" | tail -n1 | cut -d: -f2- | sed 's/^[[:space:]]*//' | tr -d '\r')"
 if [[ -n "$CONTENT_TYPE" ]]; then
   echo "[probe] Content-Type: $CONTENT_TYPE"
 fi
