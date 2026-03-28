@@ -61,7 +61,10 @@ echo "[update] 3/4 Verifying project structure"
 echo "PASS: core project files are present"
 
 echo "[update] 4/4 Final git status snapshot"
-git status --short
+git status --short -- . \
+  ':(exclude)app/phpMyAdmin/node_modules/**' \
+  ':(exclude)app/phpMyAdmin/.yarn/**' \
+  ':(exclude)app/phpMyAdmin/.yarnrc.yml'
 
 if [[ "$REBUILD_INSTALLER" -eq 1 ]]; then
   echo "[update] Rebuilding installer artifacts"

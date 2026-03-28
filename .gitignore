@@ -1,0 +1,4 @@
+# Generated package manager artifacts in embedded phpMyAdmin workspace
+app/phpMyAdmin/node_modules/
+app/phpMyAdmin/.yarn/
+app/phpMyAdmin/.yarnrc.yml
