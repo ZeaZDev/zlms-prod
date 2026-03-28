@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TARGET_URL="${1:-http://5.249.157.111:8080/}"
+TARGET_URL="${1:?Target URL must be provided as the first argument.}"
 TMP_HEADERS="$(mktemp)"
 TMP_BODY="$(mktemp)"
 trap 'rm -f "$TMP_HEADERS" "$TMP_BODY"' EXIT
