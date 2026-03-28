@@ -71,7 +71,20 @@ PY
 
 echo "[4/4] Checking git working tree includes only intentional files..."
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  git status --short
+  # Exclude known generated phpMyAdmin package-manager artifacts from readiness noise.
+  STATUS_OUTPUT="$(
+    git status --short -- . \
+      ':(exclude)app/phpMyAdmin/node_modules/**' \
+      ':(exclude)app/phpMyAdmin/.yarn/**' \
+      ':(exclude)app/phpMyAdmin/.yarnrc.yml'
+  )"
+
+  if [[ -n "$STATUS_OUTPUT" ]]; then
+    echo "$STATUS_OUTPUT"
+    echo "WARN: working tree has tracked/untracked changes outside allowed generated artifacts"
+  else
+    echo "PASS: working tree clean (excluding known generated phpMyAdmin artifacts)"
+  fi
 else
   echo "WARN: not running inside a git work tree; skipping git status check"
 fi
