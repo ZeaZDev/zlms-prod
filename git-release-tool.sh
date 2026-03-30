@@ -11,6 +11,13 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
+# Ensure VERSION file exists
+VERSION_FILE="VERSION"
+if [ ! -f "$VERSION_FILE" ]; then
+    echo "0.1.0" > "$VERSION_FILE"
+    echo "✅ VERSION file created with initial version 0.1.0"
+fi
+
 function generate_changelog() {
     echo "=== Generating changelog from last tag ==="
     LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "none")
@@ -24,10 +31,6 @@ function generate_changelog() {
 }
 
 function bump_version() {
-    VERSION_FILE="VERSION"
-    if [ ! -f "$VERSION_FILE" ]; then
-        echo "0.1.0" > "$VERSION_FILE"
-    fi
     OLD_VERSION=$(cat "$VERSION_FILE")
     IFS='.' read -r major minor patch <<< "$OLD_VERSION"
     case $1 in

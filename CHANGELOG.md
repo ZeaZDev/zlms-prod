@@ -1,0 +1,62 @@
+- add devexpress 16.2
+- Merge pull request #23 from ZeaZDev/codex/prepare-deep-learning-project-for-ubuntu-24.04
+- Add Ubuntu 24.04 migration manual and improve installer workflow
+- Merge pull request #22 from ZeaZDev/codex/run-full-meta-deep-scan-and-tests
+- Exclude phpMyAdmin yarn.lock from readiness status noise
+- Merge pull request #21 from ZeaZDev/codex/fix-installation-script-for-missing-packages
+- Update scripts/find_missing_remote.sh
+- Update scripts/find_missing_remote.sh
+- Merge pull request #19 from ZeaZDev/codex/find-missing-element-on-page
+- Merge pull request #18 from ZeaZDev/codex/find-devexpress-16.2-on-server
+- Merge pull request #20 from ZeaZDev/codex/deep-scan-and-fix-project-issues
+- Improve repo scan signal by filtering generated phpMyAdmin artifacts
+- Add remote probe script to identify missing access
+- Document blocked DevExpress 16.2 clone attempt
+- Merge pull request #17 from ZeaZDev/codex/fix-installation-script-for-missing-packages
+- Merge pull request #16 from ZeaZDev/codex/update-devexpress-to-version-16.2
+- Update DevExpress references to 16.2
+- Merge pull request #13 from ZeaZDev/codex/fix-installation-script-for-missing-packages
+- Merge branch 'main' into codex/fix-installation-script-for-missing-packages
+- Merge pull request #15 from ZeaZDev/codex/fix-installation-script-for-missing-packages-6u5q3s
+- Make DevExpress dependency detection version-agnostic
+- Merge pull request #14 from ZeaZDev/codex/fix-installation-script-for-missing-packages-zyf809
+- Fix installer handling for missing apt packages
+- Merge pull request #12 from ZeaZDev/codex/resolve-missing-vendor-dll-dependencies
+- Normalize vendor DLL path output in installer
+- Merge pull request #11 from ZeaZDev/codex/fix-missing-vendor-dll-warnings
+- Improve DevExpress DLL handling in installer
+- Merge pull request #10 from ZeaZDev/codex/add-missing-devexpress-14.2-dlls
+- Harden DevExpress source import in installer
+- Improve DevExpress binary placement in installer
+- Merge pull request #9 from ZeaZDev/codex/fix-assembly-reference-errors-for-devexpress
+- Add fallback stubs for missing DevExpress/Chart assemblies
+- Merge pull request #8 from ZeaZDev/codex/fix-installation-script-for-missing-packages
+- Make installer robust when msbuild/nuget packages are unavailable
+- Merge pull request #7 from ZeaZDev/codex/update-task-list-functionality
+- Add full-project update maintenance script
+- Merge pull request #6 from ZeaZDev/codex/add-build-for-android
+- ci: add Android and iOS build jobs
+- Merge pull request #5 from ZeaZDev/codex/generate-installer-for-project
+- Add automated installer script for project setup
+- Merge pull request #4 from ZeaZDev/codex/perform-full-project-dry-run
+- Add full-project dry-run wrapper script
+- Update README.md
+- update
+- Delete zLms-prod.prompt.yml
+- Delete zLMS-prod.experts.prompt.yml
+- Delete codex.patch
+- Create user-zLms-prod.experts.prompt.yml
+- Create system-zLMS-prod.experts.prompt.yml
+- Create CNAME
+- Create zLMS-prod.experts.prompt.yml
+- Create zLms-prod.prompt.yml
+- Create SECURITY.md
+- Merge pull request #3 from ZeaZDev/codex/remove-duplicate-files-and-optimize-code
+- Add duplicate cleanup and installer generation automation
+- Merge pull request #2 from ZeaZDev/codex/deep-dive-into-security-of-source-code
+- Harden SQL input handling and upload validation
+- Merge pull request #1 from ZeaZDev/codex/add-spellcheck-to-deep-learning-project
+- Upgrade project for release with production config checks
+- Enhance documentation and production readiness
+- first commit
+- first commit
