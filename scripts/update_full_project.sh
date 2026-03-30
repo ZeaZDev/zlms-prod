@@ -64,7 +64,8 @@ echo "[update] 4/4 Final git status snapshot"
 git status --short -- . \
   ':(exclude)app/phpMyAdmin/node_modules/**' \
   ':(exclude)app/phpMyAdmin/.yarn/**' \
-  ':(exclude)app/phpMyAdmin/.yarnrc.yml'
+  ':(exclude)app/phpMyAdmin/.yarnrc.yml' \
+  ':(exclude)app/phpMyAdmin/yarn.lock'
 
 if [[ "$REBUILD_INSTALLER" -eq 1 ]]; then
   echo "[update] Rebuilding installer artifacts"
