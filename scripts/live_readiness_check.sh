@@ -76,7 +76,8 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git status --short -- . \
       ':(exclude)app/phpMyAdmin/node_modules/**' \
       ':(exclude)app/phpMyAdmin/.yarn/**' \
-      ':(exclude)app/phpMyAdmin/.yarnrc.yml'
+      ':(exclude)app/phpMyAdmin/.yarnrc.yml' \
+      ':(exclude)app/phpMyAdmin/yarn.lock'
   )"
 
   if [[ -n "$STATUS_OUTPUT" ]]; then

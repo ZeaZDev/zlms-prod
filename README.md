@@ -57,7 +57,7 @@ Run the repository readiness check script before going live:
 
 It verifies production-safe Web.config debug settings and runs a scoped first-party typo scan.
 
-The readiness status view excludes known generated phpMyAdmin package-manager artifacts (`app/phpMyAdmin/node_modules`, `.yarn`, `.yarnrc.yml`) so only actionable repository drift is surfaced.
+The readiness status view excludes known generated phpMyAdmin package-manager artifacts (`app/phpMyAdmin/node_modules`, `.yarn`, `.yarnrc.yml`, `yarn.lock`) so only actionable repository drift is surfaced.
 
 For a broader non-mutating project dry run, use:
 
