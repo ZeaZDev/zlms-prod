@@ -1,0 +1,1880 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+portaleAgente
+</name>
+</assembly>
+<members>
+<member name="T:portaleAgente.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:portaleAgente.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:portaleAgente.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="F:portaleAgente.ChangePassword._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._lblCurrentPassword">
+<summary>
+lblCurrentPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._tbCurrentPassword">
+<summary>
+tbCurrentPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._lblPassword">
+<summary>
+lblPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._tbPassword">
+<summary>
+tbPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._lblConfirmPassword">
+<summary>
+lblConfirmPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._tbConfirmPassword">
+<summary>
+tbConfirmPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePassword._btnChangePassword">
+<summary>
+btnChangePassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ChangePasswordSuccess._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Login._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Login._lblUserName">
+<summary>
+lblUserName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Login._tbUserName">
+<summary>
+tbUserName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Login._lblPassword">
+<summary>
+lblPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Login._tbPassword">
+<summary>
+tbPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Login._btnLogin">
+<summary>
+btnLogin control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._lblUserName">
+<summary>
+lblUserName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._tbUserName">
+<summary>
+tbUserName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._lblEmail">
+<summary>
+lblEmail control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._tbEmail">
+<summary>
+tbEmail control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._lblPassword">
+<summary>
+lblPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._tbPassword">
+<summary>
+tbPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._lblConfirmPassword">
+<summary>
+lblConfirmPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._tbConfirmPassword">
+<summary>
+tbConfirmPassword control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Register._btnCreateUser">
+<summary>
+btnCreateUser control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RegisterSuccess._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._labelAgenteSelezionato">
+<summary>
+labelAgenteSelezionato control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._ASPxPageControl1">
+<summary>
+ASPxPageControl1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._gridAnagrafica">
+<summary>
+gridAnagrafica control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._gridAgentiClienti">
+<summary>
+gridAgentiClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._gridAgentiAziende">
+<summary>
+gridAgentiAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsAgenti">
+<summary>
+dsAgenti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._ErrorLabel">
+<summary>
+ErrorLabel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsAgentiClienti">
+<summary>
+dsAgentiClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsClienti">
+<summary>
+dsClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsAziende">
+<summary>
+dsAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsAgentiAziende">
+<summary>
+dsAgentiAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsNazioni">
+<summary>
+dsNazioni control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Agenti._dsProvincie">
+<summary>
+dsProvincie control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._ASPxPanel1">
+<summary>
+ASPxPanel1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._ProdottiButton">
+<summary>
+ProdottiButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._Clone">
+<summary>
+Clone control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._dsAziende">
+<summary>
+dsAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._dsNazioni">
+<summary>
+dsNazioni control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._dsProvincie">
+<summary>
+dsProvincie control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._dsRuoli">
+<summary>
+dsRuoli control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Aziende._dsSettori">
+<summary>
+dsSettori control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Societa._dsSocieta">
+<summary>
+Controllo dsSocieta.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.Societa._dsNazioni">
+<summary>
+Controllo dsNazioni.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.Societa._dsProvincie">
+<summary>
+Controllo dsProvincie.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.Societa._dsPagamenti">
+<summary>
+Controllo dsPagamenti.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.Societa._ASPxGridView1">
+<summary>
+Controllo ASPxGridView1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.categoriaProdotti._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.categoriaProdotti._dsCategoriaProdotti">
+<summary>
+dsCategoriaProdotti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._ASPxPanel1">
+<summary>
+ASPxPanel1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._ClientiAziendeButton">
+<summary>
+ClientiAziendeButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsClienti">
+<summary>
+dsClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsNazioni">
+<summary>
+dsNazioni control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsNazioniDest">
+<summary>
+dsNazioniDest control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsSettori">
+<summary>
+dsSettori control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsCategoriaClienti">
+<summary>
+dsCategoriaClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsProvince">
+<summary>
+dsProvince control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsProvinceDest">
+<summary>
+dsProvinceDest control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsRuoli">
+<summary>
+dsRuoli control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Clienti._dsZone">
+<summary>
+dsZone control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._titoloLabel">
+<summary>
+titoloLabel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._lstClienti">
+<summary>
+lstClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._lstClientiAziende">
+<summary>
+lstClientiAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._ClientiAziendeButton">
+<summary>
+ClientiAziendeButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._dsClienti">
+<summary>
+dsClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._dsClientiPrezziNetti">
+<summary>
+dsClientiPrezziNetti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._dsAziende">
+<summary>
+dsAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._vstClientiAziende">
+<summary>
+vstClientiAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ClientiPrezziNetti._dsProdotti">
+<summary>
+dsProdotti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.CodiciIva._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.CodiciIva._dsCodiciIva">
+<summary>
+dsCodiciIva control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente._Default._ASPxPageControl1">
+<summary>
+ASPxPageControl1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente._Default._WebChartControl1">
+<summary>
+WebChartControl1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente._Default._WebChartControl2">
+<summary>
+WebChartControl2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente._Default._dsAziendeSettore">
+<summary>
+dsAziendeSettore control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente._Default._dsClientiComune">
+<summary>
+dsClientiComune control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.DefaultCliente._ASPxLabel3">
+<summary>
+ASPxLabel3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.DocumentiElenco._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.DocumentiElenco._dsDocumentiTestata">
+<summary>
+dsDocumentiTestata control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.DocumentiElenco._dsClienti">
+<summary>
+dsClienti control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.DocumentiElenco._dsTipoDocumento">
+<summary>
+dsTipoDocumento control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.DocumentiElenco._dsStatoDocumento">
+<summary>
+dsStatoDocumento control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._ASPxPanel2">
+<summary>
+ASPxPanel2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._Image1">
+<summary>
+Image1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._errorLabel">
+<summary>
+errorLabel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._ASPxUploadControl">
+<summary>
+ASPxUploadControl control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._Grid">
+<summary>
+Grid control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._ASPxPanel1">
+<summary>
+ASPxPanel1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._cbAzzera">
+<summary>
+cbAzzera control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._cbSovrascrivi">
+<summary>
+cbSovrascrivi control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._ASPxCaptcha1">
+<summary>
+ASPxCaptcha1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportAziende._importASPxButton">
+<summary>
+importASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._Label1">
+<summary>
+Controllo Label1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._ASPxPanel2">
+<summary>
+Controllo ASPxPanel2.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._Image1">
+<summary>
+Controllo Image1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._errorLabel">
+<summary>
+Controllo errorLabel.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._ASPxUploadControl">
+<summary>
+Controllo ASPxUploadControl.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._Grid">
+<summary>
+Controllo Grid.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._ASPxPanel1">
+<summary>
+Controllo ASPxPanel1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._cbAzzera">
+<summary>
+Controllo cbAzzera.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._cbSovrascrivi">
+<summary>
+Controllo cbSovrascrivi.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._ASPxCaptcha1">
+<summary>
+Controllo ASPxCaptcha1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportClienti._importASPxButton">
+<summary>
+Controllo importASPxButton.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._Label1">
+<summary>
+Controllo Label1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._ASPxPanel2">
+<summary>
+Controllo ASPxPanel2.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._Image1">
+<summary>
+Controllo Image1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._errorLabel">
+<summary>
+Controllo errorLabel.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._dsAziende">
+<summary>
+Controllo dsAziende.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._dsListini">
+<summary>
+Controllo dsListini.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._dsValute">
+<summary>
+Controllo dsValute.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._Aziende">
+<summary>
+Controllo Aziende.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._Listini">
+<summary>
+Controllo Listini.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._Valute">
+<summary>
+Controllo Valute.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._ASPxUploadControl">
+<summary>
+Controllo ASPxUploadControl.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._Grid">
+<summary>
+Controllo Grid.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._ASPxPanel1">
+<summary>
+Controllo ASPxPanel1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._cbAzzera">
+<summary>
+Controllo cbAzzera.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._cbSovrascrivi">
+<summary>
+Controllo cbSovrascrivi.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._ASPxCaptcha1">
+<summary>
+Controllo ASPxCaptcha1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.ImportProdotti._importASPxButton">
+<summary>
+Controllo importASPxButton.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.LightMaster._MainContent">
+<summary>
+MainContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Listini._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Listini._dsListini">
+<summary>
+dsListini control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Listini._dsAziende">
+<summary>
+dsAziende control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._ASPxPanel1">
+<summary>
+ASPxPanel1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._ASPxLabel5">
+<summary>
+ASPxLabel5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._ASPxLabel6">
+<summary>
+ASPxLabel6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._ASPxLabel3">
+<summary>
+ASPxLabel3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._UserTextBox">
+<summary>
+UserTextBox control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._ASPxLabel4">
+<summary>
+ASPxLabel4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._PwTextBox">
+<summary>
+PwTextBox control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._loginASPxButton">
+<summary>
+loginASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._ASPxLabel7">
+<summary>
+ASPxLabel7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginCliente._disconnettiASPxButton">
+<summary>
+disconnettiASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._ASPxPanel1">
+<summary>
+ASPxPanel1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._ASPxLabel5">
+<summary>
+ASPxLabel5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._ASPxLabel6">
+<summary>
+ASPxLabel6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._ASPxLabel3">
+<summary>
+ASPxLabel3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._UserTextBox">
+<summary>
+UserTextBox control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._ASPxLabel4">
+<summary>
+ASPxLabel4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._PwTextBox">
+<summary>
+PwTextBox control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._loginASPxButton">
+<summary>
+loginASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._ASPxLabel7">
+<summary>
+ASPxLabel7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._disconnettiASPxButton">
+<summary>
+disconnettiASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.LoginUser._loginClienteASPxButton">
+<summary>
+loginClienteASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.MainMaster._LeftPane">
+<summary>
+LeftPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.MainMaster._ASPxNavBar1">
+<summary>
+ASPxNavBar1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.MainMaster._MainContent">
+<summary>
+MainContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.MainMaster._XmlDataSourceLeft">
+<summary>
+XmlDataSourceLeft control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.MainCliente._MainContent">
+<summary>
+MainContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.MainCliente._XmlDataSourceLeft">
+<summary>
+XmlDataSourceLeft control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Nazioni._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Nazioni._dsNazioni">
+<summary>
+dsNazioni control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._Body">
+<summary>
+Body control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._HeaderPane">
+<summary>
+HeaderPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._TitleLink">
+<summary>
+TitleLink control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._HeadLoginView">
+<summary>
+HeadLoginView control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._HeaderMenu">
+<summary>
+HeaderMenu control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._MainPane">
+<summary>
+MainPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._Content">
+<summary>
+Content control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._FooterPane">
+<summary>
+FooterPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._ASPxLabel2">
+<summary>
+ASPxLabel2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.RootMaster._XmlDataSourceHeader">
+<summary>
+XmlDataSourceHeader control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._Body">
+<summary>
+Body control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._HeaderPane">
+<summary>
+HeaderPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._TitleLabel">
+<summary>
+TitleLabel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._AccediASPxButton">
+<summary>
+AccediASPxButton control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._DisconnettiASPxButton1">
+<summary>
+DisconnettiASPxButton1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._HeaderMenu">
+<summary>
+HeaderMenu control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._MainPane">
+<summary>
+MainPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._Content">
+<summary>
+Content control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._FooterPane">
+<summary>
+FooterPane control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._ASPxLabel2">
+<summary>
+ASPxLabel2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Site1._XmlDataSourceHeader">
+<summary>
+XmlDataSourceHeader control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ruoli._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.ruoli._dsRuoli">
+<summary>
+dsRuoli control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.settori._ASPxGridView1">
+<summary>
+Controllo ASPxGridView1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.settori._dsSettori">
+<summary>
+Controllo dsSettori.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.tipoAlert._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.tipoAlert._dsTipoAlert">
+<summary>
+dsTipoAlert control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.tipoDocumento._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.tipoDocumento._dsTipoDocumento">
+<summary>
+dsTipoDocumento control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.UnitaMisura._titoloLabel">
+<summary>
+Controllo titoloLabel.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.UnitaMisura._ASPxGridView1">
+<summary>
+Controllo ASPxGridView1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.UnitaMisura._dsUnitaMisura">
+<summary>
+Controllo dsUnitaMisura.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.Valute._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Valute._dsValute">
+<summary>
+dsValute control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.WebForm1._form1">
+<summary>
+Controllo form1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.WebForm1._ASPxGridView1">
+<summary>
+Controllo ASPxGridView1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.WebForm1._SqlDataSource1">
+<summary>
+Controllo SqlDataSource1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.WebForm2._ASPxGridView1">
+<summary>
+Controllo ASPxGridView1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.WebForm2._SqlDataSource1">
+<summary>
+Controllo SqlDataSource1.
+</summary>
+<remarks>
+Campo generato automaticamente.
+Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+</remarks>
+</member>
+<member name="F:portaleAgente.Zone._ASPxGridView1">
+<summary>
+ASPxGridView1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Zone._dsZone">
+<summary>
+dsZone control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:portaleAgente.Zone._dsProvince">
+<summary>
+dsProvince control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+</members>
+</doc>
