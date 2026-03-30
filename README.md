@@ -9,7 +9,7 @@ This repository now includes a Ubuntu 24.04-focused installer and run manual for
 - Automated installer: `./installer.sh --yes`
 - Full operator guide: `UBUNTU_24_04_MANUAL.md`
 
-If your environment requires DevExpress 16.2 binaries, provide them during install:
+If your environment requires DevExpress 16.2 binaries, the installer now seeds missing files from `app/devexpress` first and still supports external import:
 
 ```bash
 DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh --yes
@@ -60,6 +60,7 @@ Optional flags:
 
 - `--apply-duplicates` removes duplicate backup/copy files.
 - `--rebuild-installer` regenerates installer artifacts in `dist/`.
+- Automatically fails early when required DevExpress 16.2 DLLs are unavailable from both `../../lms-library` and `app/devexpress`.
 
 ## Live readiness proof checks
 
@@ -104,4 +105,13 @@ You can place binaries manually, or let the installer import them from a folder/
 
 ```bash
 DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh
+```
+
+
+## DevExpress dependency validation
+
+Use this command to verify all DevExpress 16.2 binaries referenced by `app/lms.csproj` are available (from either `../../lms-library` or `app/devexpress`) before building:
+
+```bash
+./scripts/check_devexpress_references.sh
 ```
