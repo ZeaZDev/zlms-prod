@@ -17,7 +17,7 @@ tar -czf "$PAYLOAD_PATH" \
   --exclude='app/bin' \
   --exclude='app/obj' \
   --exclude='app/phpMyAdmin/node_modules' \
-  app db scripts README.md SECURITY_DEEP_DIVE.md
+  app db scripts README.md SECURITY_DEEP_DIVE.md UBUNTU_24_04_MANUAL.md installer.sh
 
 cat > "$INSTALLER_PATH" <<'SCRIPT'
 #!/usr/bin/env bash
