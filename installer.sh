@@ -9,6 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$SCRIPT_DIR"
 APP_DIR="$PROJECT_ROOT/app"
 VENDOR_DIR="$(realpath -m "$APP_DIR/../../lms-library")"
+BUNDLED_DIR="$APP_DIR/devexpress"
 
 SKIP_BUILD=0
 ASSUME_YES=0
@@ -181,10 +182,33 @@ import_devexpress_binaries() {
   echo "[WARN] DEVEXPRESS_SOURCE is neither a directory nor a .zip: $source_path"
 }
 
+
+seed_vendor_from_bundled() {
+  mkdir -p "$VENDOR_DIR"
+
+  if [[ ! -d "$BUNDLED_DIR" ]]; then
+    return 0
+  fi
+
+  local copied=0
+  for dll in "${DEVEXPRESS_DLLS[@]}"; do
+    if [[ ! -f "$VENDOR_DIR/$dll" && -f "$BUNDLED_DIR/$dll" ]]; then
+      cp -f "$BUNDLED_DIR/$dll" "$VENDOR_DIR/$dll"
+      copied=1
+    fi
+  done
+
+  if [[ "$copied" -eq 1 ]]; then
+    echo "  [INFO] Seeded missing vendor DLLs from bundled app/devexpress fallback"
+  fi
+}
+
 if [[ -n "${DEVEXPRESS_SOURCE:-}" ]]; then
   echo "==> Importing DevExpress binaries from DEVEXPRESS_SOURCE"
   import_devexpress_binaries "$DEVEXPRESS_SOURCE"
 fi
+
+seed_vendor_from_bundled
 
 echo "==> Restoring NuGet packages"
 if [[ -f "$APP_DIR/packages.config" ]]; then
@@ -197,7 +221,11 @@ echo "==> Validating external binary prerequisites"
 MISSING=0
 for dll in "${DEVEXPRESS_DLLS[@]}"; do
   if [[ ! -f "$VENDOR_DIR/$dll" ]]; then
-    echo "  [WARN] Missing required vendor DLL: $dll"
+    if [[ -f "$BUNDLED_DIR/$dll" ]]; then
+      echo "  [WARN] Missing in lms-library but available in app/devexpress fallback: $dll"
+    else
+      echo "  [WARN] Missing required vendor DLL: $dll"
+    fi
     MISSING=1
   fi
 done
@@ -229,5 +257,6 @@ You can rerun with automated DevExpress import:
 MSG
 
 if [[ "$MISSING" -eq 1 ]]; then
-  echo "Completed with warnings about missing vendor DLLs."
+  echo "Completed with warnings about missing vendor DLLs.
+If app/devexpress has the files, rerun installer to seed ../../lms-library automatically."
 fi

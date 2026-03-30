@@ -43,10 +43,10 @@ done
 
 echo "[update] Starting full-project update pipeline..."
 
-echo "[update] 1/4 Running live readiness checks"
+echo "[update] 1/5 Running live readiness checks"
 ./scripts/live_readiness_check.sh
 
-echo "[update] 2/4 Running duplicate scan"
+echo "[update] 2/5 Running duplicate scan"
 if [[ "$APPLY_DUPLICATES" -eq 1 ]]; then
   echo "[update] Applying duplicate cleanup"
   ./scripts/clean_duplicate_files.sh --apply
@@ -54,13 +54,16 @@ else
   ./scripts/clean_duplicate_files.sh
 fi
 
-echo "[update] 3/4 Verifying project structure"
+echo "[update] 3/5 Verifying project structure"
 [[ -f app/lms.csproj ]] || { echo "FAIL: missing app/lms.csproj"; exit 1; }
 [[ -f app/Web.config ]] || { echo "FAIL: missing app/Web.config"; exit 1; }
 [[ -d scripts ]] || { echo "FAIL: missing scripts/"; exit 1; }
 echo "PASS: core project files are present"
 
-echo "[update] 4/4 Final git status snapshot"
+echo "[update] 4/5 Checking DevExpress dependency readiness"
+./scripts/check_devexpress_references.sh
+
+echo "[update] 5/5 Final git status snapshot"
 git status --short -- . \
   ':(exclude)app/phpMyAdmin/node_modules/**' \
   ':(exclude)app/phpMyAdmin/.yarn/**' \
