@@ -2,6 +2,20 @@
 
 Legacy ASP.NET Web Forms learning management system (LMS) for police training workflows.
 
+## Ubuntu 24.04 conversion path
+
+This repository now includes a Ubuntu 24.04-focused installer and run manual for Mono compatibility mode:
+
+- Automated installer: `./installer.sh --yes`
+- Full operator guide: `UBUNTU_24_04_MANUAL.md`
+
+If your environment requires DevExpress 16.2 binaries, provide them during install:
+
+```bash
+DEVEXPRESS_SOURCE=/path/to/devexpress-folder-or-zip ./installer.sh --yes
+```
+
+
 ## Project deep-dive (quick map)
 
 ### Core platform
