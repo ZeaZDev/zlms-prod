@@ -20,14 +20,14 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore packages
-        run: nuget restore zlms-prod.sln
+        run: nuget restore app/lms.csproj
 
       - name: Build Release
-        run: msbuild zlms-prod.sln /p:Configuration=Release /p:Platform="Any CPU" /m
+        run: msbuild app/lms.csproj /p:Configuration=Release /p:Platform="Any CPU" /m
 
       - name: Package Web Deploy
         run: |
-          msbuild zlms-prod.csproj `
+          msbuild app/lms.csproj `
             /t:Package `
             /p:Configuration=Release `
             /p:DeployOnBuild=true `

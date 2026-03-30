@@ -11,7 +11,7 @@ on:
 
 jobs:
   codeql:
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
     permissions:
       security-events: write
       actions: read
@@ -25,8 +25,14 @@ jobs:
         with:
           languages: csharp
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore project dependencies
+        run: nuget restore app/lms.csproj
+
+      - name: Build project for CodeQL
+        run: msbuild app/lms.csproj /p:Configuration=Release /p:Platform="Any CPU" /m
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
@@ -41,7 +47,7 @@ jobs:
         with:
           project: 'zlms-prod'
           path: '.'
-          format: 'HTML,SARIF'
+          format: 'ALL'
           out: 'reports'
           args: >
             --enableExperimental
