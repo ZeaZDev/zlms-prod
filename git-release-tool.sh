@@ -19,15 +19,29 @@ if [ ! -f "$VERSION_FILE" ]; then
 fi
 
 function generate_changelog() {
-    echo "=== Generating changelog from last tag ==="
-    LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "none")
-    if [ "$LAST_TAG" = "none" ]; then
+    echo "=== Generating changelog ==="
+    VERSION=$(cat VERSION)
+
+    # Find last tag (if any)
+    LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+    if [ -z "$LAST_TAG" ]; then
         echo "No previous tag found. Generating full log."
-        git log --pretty=format:"- %s" > CHANGELOG.md
+        git log --pretty=format:"- %s" > CHANGELOG.tmp
     else
-        git log "$LAST_TAG"..HEAD --pretty=format:"- %s" > CHANGELOG.md
+        echo "Last tag: $LAST_TAG"
+        git log "$LAST_TAG"..HEAD --pretty=format:"- %s" > CHANGELOG.tmp
     fi
-    echo "✅ CHANGELOG.md updated."
+
+    # Prepend version header
+    {
+        echo "## v$VERSION"
+        cat CHANGELOG.tmp
+        echo ""
+    } >> CHANGELOG.md
+
+    rm CHANGELOG.tmp
+    echo "✅ CHANGELOG.md updated with entries for v$VERSION"
 }
 
 function bump_version() {
